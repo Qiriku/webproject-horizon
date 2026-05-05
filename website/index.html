@@ -4,70 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebProject Horizon</title>
-    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/base.css">
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>WebProject Horizon</h1>
-            <p>Your Node.js Static Website</p>
-        </header>
+        <div id="header-placeholder"></div>
+        <div id="nav-placeholder"></div>
+
+        <section class="advertisement-section">
+            <!-- TODO: Adapt this section to contain the imgs as background with buttons on top, for now its just a placeholder -->
+            <img src="/media/imgs/advertisement.png" alt="Advertisement/Promotion">
+        </section>    
         
-        <button class="burger-menu" id="burgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        
-        <nav id="navMenu">
-            <a href="/">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/contact.html">Contact</a>
-        </nav>
-        
+        <section class="news-section">
+            <!-- Maybe we can save the news in on a seperate spot and always get the lastest news via an API endpoint? -->
+            <div class="content-section">
+                <h2>Latest News</h2>
+                <p>Stay tuned for the latest updates and news about our project!</p>
+            </div>
+        </section>
+
         <main>
             <div class="content-section">
                 <h2>Welcome!</h2>
                 <p>This is your sample static website hosted with Node.js and Express. You can add more HTML files to the website folder and they will be automatically served.</p>
             </div>
-            
-            <div class="content-section">
-                <h2>Getting Started</h2>
-                <p>To add more pages, simply create new HTML files in the <strong>website</strong> folder. They will be accessible via the server at their file path (e.g., <code>localhost:3000/yourpage.html</code>).</p>
-            </div>
-            
-            <div class="content-section">
-                <h2>Features</h2>
-                <ul>
-                    <li>Fast and simple static file serving</li>
-                    <li>Easy to expand with more pages</li>
-                    <li>Responsive design</li>
-                    <li>Built with Express.js</li>
-                </ul>
-            </div>
         </main>
+
+        <section class="calendar-section">
+            <!-- TODO: Replace this with a functional calendar -->
+            <div class="content-section">
+                <h2>Upcoming Events</h2>
+                <p>Check out our calendar for upcoming events and deadlines!</p>
+            </div>
+        </section>
         
-        <footer>
-            <p>&copy; 2026 WebProject Horizon. All rights reserved.</p>
-        </footer>
+        <div id="footer-placeholder"></div>
     </div>
 
     <script>
-        const burgerMenu = document.getElementById('burgerMenu');
-        const navMenu = document.getElementById('navMenu');
-
-        burgerMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            burgerMenu.classList.toggle('active');
-        });
-
-        // Close menu when a link is clicked
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                burgerMenu.classList.remove('active');
+        // Load components
+        fetch('/components/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
             });
-        });
+
+        fetch('/components/nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-placeholder').innerHTML = data;
+                // Initialize burger menu after nav is loaded
+                initBurgerMenu();
+            });
+
+        fetch('/components/footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        function initBurgerMenu() {
+            const burgerMenu = document.getElementById('burgerMenu');
+            const navMenu = document.getElementById('navMenu');
+
+            if (burgerMenu && navMenu) {
+                burgerMenu.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                    burgerMenu.classList.toggle('active');
+                });
+
+                // Close menu when a link is clicked
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navMenu.classList.remove('active');
+                        burgerMenu.classList.remove('active');
+                    });
+                });
+            }
+        }
     </script>
 </body>
 </html>
