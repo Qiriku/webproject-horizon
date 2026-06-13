@@ -3,71 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebProject Horizon</title>
+    <!-- CLUE 1: Browser title says Horizon 2026 while footer and theme say 2012 -->
+    <title>Horizon 2026</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/components.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>WebProject Horizon</h1>
-            <p>Your Node.js Static Website</p>
-        </header>
-        
-        <button class="burger-menu" id="burgerMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        
-        <nav id="navMenu">
-            <a href="/">Home</a>
-            <a href="/about.html">About</a>
-            <a href="/contact.html">Contact</a>
-        </nav>
-        
-        <main>
-            <div class="content-section">
-                <h2>Welcome!</h2>
-                <p>This is your sample static website hosted with Node.js and Express. You can add more HTML files to the website folder and they will be automatically served.</p>
-            </div>
-            
-            <div class="content-section">
-                <h2>Getting Started</h2>
-                <p>To add more pages, simply create new HTML files in the <strong>website</strong> folder. They will be accessible via the server at their file path (e.g., <code>localhost:3000/yourpage.html</code>).</p>
-            </div>
-            
-            <div class="content-section">
-                <h2>Features</h2>
-                <ul>
-                    <li>Fast and simple static file serving</li>
-                    <li>Easy to expand with more pages</li>
-                    <li>Responsive design</li>
-                    <li>Built with Express.js</li>
-                </ul>
-            </div>
-        </main>
-        
-        <footer>
-            <p>&copy; 2026 WebProject Horizon. All rights reserved.</p>
-        </footer>
-    </div>
+    <!-- DRY Header injected here -->
+    <div id="header-placeholder"></div>
 
-    <script>
-        const burgerMenu = document.getElementById('burgerMenu');
-        const navMenu = document.getElementById('navMenu');
+    <main>
+        <!-- Hero Banner Section -->
+        <div class="hero-banner">
+            <h2>Shape Your Future</h2>
+            <p>in a World of Endless Possibilities</p>
+            <p style="margin-top: 1rem;">At Horizon Institute, we empower minds to innovate, explore, and lead tomorrow.</p>
+            <div class="hero-buttons">
+                <a href="/admissions.html" class="btn btn-primary">Apply Now</a>
+                <a href="/academics.html" class="btn btn-secondary">Explore Programs</a>
+            </div>
+        </div>
 
-        burgerMenu.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            burgerMenu.classList.toggle('active');
-        });
+        <div class="content-grid-2">
+            <!-- Left Main Content Column -->
+            <div class="main-column">
+                
+                <!-- News & Announcements -->
+                <section class="section-card">
+                    <h2>News & Announcements</h2>
+                    
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="date">February 15, 2012</span>
+                        </div>
+                        <h3><a href="/news.html">Fall Semester Applications Now Open</a></h3>
+                        <p>Prospective students are invited to apply for early review. Selected applicants may be contacted for additional assessment.</p>
+                    </article>
 
-        // Close menu when a link is clicked
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                burgerMenu.classList.remove('active');
-            });
-        });
-    </script>
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="date">January 28, 2012</span>
+                        </div>
+                        <h3><a href="/news.html">Horizon Researchers Break New Ground</a></h3>
+                        <p>Faculty from Horizon’s Cognitive Systems department have announced promising results in identity preservation and memory continuity.</p>
+                    </article>
+
+                    <article class="news-item">
+                        <div class="news-meta">
+                            <span class="date">January 10, 2012</span>
+                        </div>
+                        <h3><a href="/map.html">Campus Renovation Project Underway</a></h3>
+                        <p>Sections of the west campus remain closed while structural updates are completed. Students are advised to follow posted routes.</p>
+                    </article>
+                </section>
+
+                <!-- Featured Programs -->
+                <section class="section-card">
+                    <h2>Featured Programs</h2>
+                    <div class="content-grid-2" style="grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="program-brief">
+                            <h3><a href="/academics.html">Computer Science</a></h3>
+                            <p>Explore the future of technology and software innovation.</p>
+                        </div>
+                        <div class="program-brief">
+                            <h3><a href="/academics.html">Global Studies</a></h3>
+                            <p>Understand the world. Create global impact.</p>
+                        </div>
+                        <div class="program-brief">
+                            <h3><a href="/academics.html">Biomedical Engineering</a></h3>
+                            <p>Where engineering meets medicine to save lives.</p>
+                        </div>
+                        <div class="program-brief program-highlight">
+                            <h3><a href="/academics.html">Cognitive Systems</a></h3>
+                            <p>Study memory, perception, identity, and the future of human continuity.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar Column -->
+            <div class="sidebar-column">
+                
+                <!-- Life at Horizon -->
+                <section class="section-card">
+                    <h2>Life at Horizon</h2>
+                    <div class="image-placeholder">
+                        <div class="placeholder-title">Student Group Photo</div>
+                        <div class="placeholder-desc">website/assets/images/students_group.jpg</div>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--light-text);">At Horizon Institute, we believe campus life is about discovery, collaboration, and personal growth. Our diverse community brings students together from all across the globe to learn, build, and connect.</p>
+                </section>
+
+                <!-- Upcoming Events -->
+                <section class="section-card">
+                    <h2>Upcoming Events</h2>
+                    
+                    <div class="event-card">
+                        <div class="event-date-badge">
+                            <div class="month">Mar</div>
+                            <div class="day">05</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Open Campus Day</h4>
+                            <p>Saturday, 10:00 AM</p>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-date-badge">
+                            <div class="month">Mar</div>
+                            <div class="day">12</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Guest Lecture: Future of AI</h4>
+                            <p>Monday, 2:00 PM</p>
+                        </div>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-date-badge">
+                            <div class="month">Mar</div>
+                            <div class="day">20</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Spring Career Fair</h4>
+                            <p>Tuesday, 11:00 AM</p>
+                        </div>
+                    </div>
+
+                    <div class="event-card event-special">
+                        <div class="event-date-badge">
+                            <div class="month">Mar</div>
+                            <div class="day">22</div>
+                        </div>
+                        <div class="event-details">
+                            <h4>Student Orientation Review</h4>
+                            <p>Time: 22:04</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
 </body>
 </html>

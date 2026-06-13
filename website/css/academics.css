@@ -1,0 +1,110 @@
+/* 
+ * FILE: academics.css
+ * PURPOSE: Page-specific styles for the Academics page.
+ * DEPENDENCIES: styles.css (Global)
+ * KEY SECTIONS: Program Cards, Featured Courses, Research Initiatives
+ */
+
+/* ==========================================================================
+   PROGRAMS SECTION
+   ========================================================================== */
+.program-detail {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+}
+
+.program-detail h3 {
+    font-size: 1.2rem;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.program-highlight {
+    background-color: #f7fafc;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.program-highlight h3 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    border-bottom: none;
+    padding-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.program-badge {
+    font-size: 0.75rem;
+    background-color: var(--accent-color);
+    color: var(--white);
+    padding: 0.2rem 0.5rem;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+.restricted-link-container {
+    border-top: 1px dashed var(--border-color);
+    padding-top: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.restricted-link {
+    font-size: 0.85rem;
+    color: #b7791f;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.restricted-warning {
+    display: none;
+    background-color: #fffaf0;
+    border: 1px solid #feebc8;
+    border-radius: 4px;
+    padding: 0.6rem;
+    font-size: 0.8rem;
+    color: #c05621;
+    margin-top: 0.5rem;
+    transition: all 0.3s;
+}
+
+/* ==========================================================================
+   FEATURED COURSES
+   ========================================================================== */
+.featured-course {
+    margin-bottom: 1rem;
+    border-bottom: 1px dashed var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.featured-course:last-child {
+    border-bottom: none;
+    padding-bottom: 0.5rem;
+}
+
+.course-code {
+    font-size: 0.75rem;
+    font-family: monospace;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.1rem 0.4rem;
+    border-radius: 3px;
+}
+
+.course-title {
+    font-size: 0.95rem;
+    color: var(--dark-text);
+    margin-top: 0.25rem;
+}
+
+.course-desc {
+    font-size: 0.8rem;
+    color: var(--light-text);
+}

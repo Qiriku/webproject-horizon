@@ -1,0 +1,52 @@
+/* 
+ * FILE: news.css
+ * PURPOSE: Page-specific styles for the News & Events page.
+ * DEPENDENCIES: styles.css (Global)
+ * KEY SECTIONS: News Feed, Sidebar
+ */
+
+/* ==========================================================================
+   NEWS FEED
+   ========================================================================== */
+.news-item {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.news-meta {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.news-meta .date {
+    font-weight: bold;
+    color: var(--secondary-color);
+}
+
+.news-item h3 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-bottom: 0.6rem;
+    font-family: 'Georgia', Times, serif;
+    transition: color 0.2s;
+}
+
+.news-item h3 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.news-item h3 a:hover {
+    color: var(--accent-color);
+}

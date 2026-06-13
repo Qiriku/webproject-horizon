@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics | Horizon Institute</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/academics.css">
+    <script src="/js/components.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section-card" style="margin-bottom: 2rem;">
+            <h2>Undergraduate & Graduate Programs</h2>
+            <p style="color: var(--light-text); margin-bottom: 1.5rem;">At Horizon Institute, our academic catalog is built upon rigorous investigation, interdisciplinary continuity, and the preservation of intellectual traditions. We offer specialized tracks across science, medicine, and human society to prepare our candidates for future challenges.</p>
+            
+            <div class="content-grid-3">
+                <div class="image-placeholder">
+                    <div class="placeholder-title">Classroom Photo</div>
+                    <div class="placeholder-desc">website/assets/images/classroom_1.jpg</div>
+                </div>
+                <div class="image-placeholder">
+                    <div class="placeholder-title">Computer Lab Photo</div>
+                    <div class="placeholder-desc">website/assets/images/computer_lab.jpg</div>
+                </div>
+                <div class="image-placeholder">
+                    <div class="placeholder-title">Biomedical Lab Photo</div>
+                    <div class="placeholder-desc">website/assets/images/biomedical_lab.jpg</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="content-grid-2">
+            <!-- Left Column: Program Cards -->
+            <div class="main-column">
+                <section class="section-card">
+                    <h2>Academic Departments</h2>
+                    
+                    <div class="program-detail">
+                        <h3>Computer Science</h3>
+                        <p>Students learn programming, systems design, artificial intelligence, and ethical software development.</p>
+                    </div>
+
+                    <div class="program-detail">
+                        <h3>Biomedical Engineering</h3>
+                        <p>Students explore the intersection of medicine, biology, and engineering.</p>
+                    </div>
+
+                    <div class="program-detail">
+                        <h3>Global Studies</h3>
+                        <p>Students examine culture, migration, conflict, and international cooperation.</p>
+                    </div>
+
+                    <div class="program-detail">
+                        <h3>Symbolic Anthropology</h3>
+                        <p>Students investigate the role of ritual, symbol, and belief in human societies. Emphasis is placed on the continuity of ritual language, semiotic preservation, and cultural continuity across deep time.</p>
+                    </div>
+
+                    <!-- Cognitive Systems Program (Main Story Hook) -->
+                    <div class="program-detail program-highlight">
+                        <h3>
+                            Cognitive Systems
+                            <span class="program-badge">Core Track</span>
+                        </h3>
+                        <p style="margin-top: 0.5rem; margin-bottom: 1rem;">Students study memory, perception, identity, and decision-making through scientific and philosophical approaches, ensuring deep cognitive continuity.</p>
+                        
+                        <div class="restricted-link-container">
+                            <a href="#" id="continuityLink" class="restricted-link">
+                                ⚠️ Advanced Continuity Track (Restricted Access)
+                            </a>
+                            <div id="continuityWarning" class="restricted-warning">
+                                <strong>System Notice:</strong> Access restricted to approved applicants. Candidate credentials required.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar Column: Featured Courses with Course Codes -->
+            <div class="sidebar-column">
+                <section class="section-card">
+                    <h2>Featured Courses</h2>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-bottom: 1rem;">Explore some of our leading interdisciplinary course offerings for this semester.</p>
+                    
+                    <div class="featured-course">
+                        <span class="course-code">COG-2204</span>
+                        <h4 class="course-title">Cognitive Preservation Protocols</h4>
+                        <p class="course-desc">Theoretical study on memory continuity and stabilizing identity structures.</p>
+                    </div>
+
+                    <div class="featured-course">
+                        <span class="course-code">BIO-0715</span>
+                        <h4 class="course-title">Somatic Continuity & Biomarker Mapping</h4>
+                        <p class="course-desc">Research on post-trauma body preservation and organic storage containers.</p>
+                    </div>
+
+                    <div class="featured-course">
+                        <span class="course-code">SYM-1818</span>
+                        <h4 class="course-title">Symbolic Ritual Alignment</h4>
+                        <p class="course-desc">Investigation of ancient pagan symbols and sigils as stabilizing constructs.</p>
+                    </div>
+
+                    <div class="featured-course">
+                        <span class="course-code">ARC-2012</span>
+                        <h4 class="course-title">Historical Archive Continuity</h4>
+                        <p class="course-desc">Principles of maintaining unified institutional archives and records.</p>
+                    </div>
+                </section>
+
+                <section class="section-card">
+                    <h2>Research Initiatives</h2>
+                    <div class="image-placeholder" style="min-height: 120px;">
+                        <div class="placeholder-title">Brain Scan Image</div>
+                        <div class="placeholder-desc">website/assets/images/brain_scan.png</div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--light-text);">
+                        Our state-of-the-art imaging laboratories analyze memory continuity patterns in real-time.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const link = document.getElementById('continuityLink');
+            const warning = document.getElementById('continuityWarning');
+            if (link && warning) {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    warning.style.display = 'block';
+                    warning.style.opacity = '0';
+                    setTimeout(() => {
+                        warning.style.opacity = '1';
+                    }, 50);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
