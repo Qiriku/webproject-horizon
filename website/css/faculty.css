@@ -1,0 +1,74 @@
+/* 
+ * FILE: faculty.css
+ * PURPOSE: Page-specific styles for the Faculty & Staff page.
+ * DEPENDENCIES: styles.css (Global)
+ * KEY SECTIONS: Faculty Grid, Profile Cards
+ */
+
+/* ==========================================================================
+   FACULTY GRID
+   ========================================================================== */
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.faculty-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.faculty-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(0, 51, 102, 0.12);
+}
+
+.faculty-card h3 {
+    color: var(--primary-color);
+    font-size: 1.15rem;
+    margin-bottom: 0.2rem;
+    font-family: 'Georgia', Times, serif;
+}
+
+.faculty-card .title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.faculty-card .age {
+    font-size: 0.8rem;
+    color: var(--light-text);
+    margin-bottom: 0.8rem;
+}
+
+.faculty-card .bio {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--dark-text);
+}
+
+/* ==========================================================================
+   PORTRAITS
+   ========================================================================== */
+.portrait {
+    width: 150px;
+    height: 180px;
+    min-height: 180px;
+    margin: 0 auto 1rem auto;
+    border-radius: 4px;
+    padding: 1rem;
+}
+
+.portrait::before {
+    content: '👤';
+}

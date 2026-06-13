@@ -1,0 +1,58 @@
+/* 
+ * FILE: campus-life.css
+ * PURPOSE: Page-specific styles for the Campus Life page.
+ * DEPENDENCIES: styles.css (Global)
+ * KEY SECTIONS: Campus Grid, Student Cards, Traditions
+ */
+
+/* ==========================================================================
+   CAMPUS GRID
+   ========================================================================== */
+.campus-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.campus-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.2s;
+}
+
+.campus-card:hover {
+    transform: translateY(-2px);
+}
+
+.campus-card-content {
+    padding: 1.5rem;
+}
+
+.campus-card-content h3 {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Georgia', Times, serif;
+}
+
+.campus-card-content p {
+    font-size: 0.9rem;
+    color: var(--dark-text);
+}
+
+/* ==========================================================================
+   CAMPUS TRADITIONS
+   ========================================================================== */
+.traditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.tradition-image {
+    min-height: 150px;
+}

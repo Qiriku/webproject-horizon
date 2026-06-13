@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | Horizon Institute</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/admissions.css">
+    <script src="/js/components.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section-card" style="margin-bottom: 2rem;">
+            <h2>Apply to Horizon</h2>
+            <p>Horizon welcomes curious, motivated students from diverse backgrounds. Our admissions process considers academic performance, personal goals, resilience, and intellectual potential.</p>
+        </section>
+
+        <div class="content-grid-2">
+            <!-- Left Column: Form & Interaction -->
+            <div class="main-column">
+                <section class="section-card">
+                    <h3>Online Application Form</h3>
+                    <p style="font-size: 0.85rem; color: var(--light-text); margin-bottom: 1.5rem;">Please complete all required sections. All candidate data is securely processed in accordance with our institutional preservation guidelines.</p>
+                    
+                    <form id="admissionsForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label for="appName">Full Name</label>
+                            <input type="text" id="appName" required placeholder="John Doe">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="appEmail">Email Address</label>
+                            <input type="email" id="appEmail" required placeholder="john.doe@example.com">
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label for="appAge">Age</label>
+                                <input type="text" id="appAge" required placeholder="18">
+                            </div>
+                            <div class="form-group">
+                                <label for="appProgram">Program of Interest</label>
+                                <select id="appProgram" required>
+                                    <option value="">Select a program...</option>
+                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Biomedical Engineering">Biomedical Engineering</option>
+                                    <option value="Global Studies">Global Studies</option>
+                                    <option value="Symbolic Anthropology">Symbolic Anthropology</option>
+                                    <option value="Cognitive Systems">Cognitive Systems</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <h3 style="margin-top: 1.5rem; font-size: 1.1rem; border-bottom: none; padding-bottom: 0;">Supplemental Suitability Assessment</h3>
+                        <p style="font-size: 0.8rem; color: var(--light-text); margin-bottom: 1rem;">These initial questions help our Board determine optimal candidate allocation.</p>
+
+                        <div class="form-group">
+                            <label>Do you often experience déjà vu?</label>
+                            <select required>
+                                <option value="">Select an answer...</option>
+                                <option value="Yes">Yes, frequently</option>
+                                <option value="Sometimes">Occasionally</option>
+                                <option value="No">No, never</option>
+                                <option value="Unsure">Unsure</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Do you remember dreams vividly?</label>
+                            <select required>
+                                <option value="">Select an answer...</option>
+                                <option value="Yes">Yes, highly vivid</option>
+                                <option value="Sometimes">Some details remain</option>
+                                <option value="No">No, rarely</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Do you ever feel detached from your reflection?</label>
+                            <select required>
+                                <option value="">Select an answer...</option>
+                                <option value="Yes">Yes, often</option>
+                                <option value="Sometimes">Occasionally</option>
+                                <option value="No">No, never</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Would you describe your sense of self as stable?</label>
+                            <select required>
+                                <option value="">Select an answer...</option>
+                                <option value="Yes">Yes, entirely stable</option>
+                                <option value="Fluctuating">Fluctuates over time</option>
+                                <option value="No">No, fragmented</option>
+                            </select>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="consentCheck" required>
+                            <label for="consentCheck"><strong>I consent to extended academic record preservation.</strong> I understand my identity patterns, application data, and academic records may be held indefinitely within Horizon's secure servers for continuity purposes.</label>
+                        </div>
+
+                        <div style="margin-top: 1.5rem;">
+                            <button type="submit" class="btn btn-primary" style="border: none;">Submit Application</button>
+                        </div>
+                    </form>
+
+                    <div id="formStatusContainer" class="status-container">
+                        <div id="spinner" class="status-spinner"></div>
+                        <h4 id="statusTitle" class="status-title">Processing Application...</h4>
+                        <p id="statusMsg" class="status-msg">Connecting to Horizon administrative systems...</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column: Requirements & Office Info -->
+            <div class="sidebar-column">
+                <section class="section-card">
+                    <h2>Admission Requirements</h2>
+                    <ul style="margin-left: 1.25rem; font-size: 0.9rem; color: var(--dark-text); display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.5rem;">
+                        <li>Completed application form.</li>
+                        <li>Statement of interest and potential research alignment.</li>
+                        <li>Validated academic records and transcript submissions.</li>
+                        <li>Optional interview with the Department Director.</li>
+                        <li><strong>Candidate suitability review</strong> (Board review).</li>
+                    </ul>
+                </section>
+
+                <section class="section-card">
+                    <h2>Scholarship Review</h2>
+                    <div class="image-placeholder scholarship-banner">
+                        <div class="placeholder-title" style="color: var(--secondary-color);">Scholarship Banner</div>
+                        <div class="placeholder-desc">website/assets/images/scholarship.jpg</div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--light-text);">
+                        Horizon awards full-ride academic grants to candidates showing exceptional memory consistency and perceptual stability.
+                    </p>
+                </section>
+
+                <section class="section-card">
+                    <h2>Admissions Office</h2>
+                    <div class="image-placeholder">
+                        <div class="placeholder-title">Office Photo</div>
+                        <div class="placeholder-desc">website/assets/images/admissions_office.jpg</div>
+                    </div>
+                    <p style="font-size: 0.85rem; color: var(--light-text); text-align: center;">
+                        Our administrative office coordinates student advancement and academic progression.
+                    </p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = document.getElementById('admissionsForm');
+            const statusContainer = document.getElementById('formStatusContainer');
+            const spinner = document.getElementById('spinner');
+            const statusTitle = document.getElementById('statusTitle');
+            const statusMsg = document.getElementById('statusMsg');
+
+            form.style.display = 'none';
+            statusContainer.style.display = 'block';
+
+            statusTitle.innerText = "Application Received.";
+            statusMsg.innerText = "Validating secure applicant record fields...";
+
+            setTimeout(() => {
+                statusTitle.innerText = "Candidate suitability review pending.";
+                statusMsg.innerText = "Allocating academic profile to secure database indexes...";
+            }, 2000);
+
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                statusTitle.innerText = "Additional verification may be required.";
+                statusTitle.style.color = "#c05621";
+                statusMsg.innerHTML = `Please review your student credentials. You may now attempt to log in to the <a href="/portal.html" style="color: var(--secondary-color); font-weight: bold; text-decoration: underline;">Student Portal</a> using your assigned student directory ID.<br><br><span style="font-family: monospace; font-size: 0.8rem; background-color: #fffaf0; padding: 0.3rem 0.5rem; border: 1px solid #feebc8; border-radius: 3px;">Application ID: HZN-2204-${Math.floor(100000 + Math.random() * 900000)}</span>`;
+            }, 4000);
+        }
+    </script>
+</body>
+</html>

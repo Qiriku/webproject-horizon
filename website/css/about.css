@@ -1,0 +1,125 @@
+/* 
+ * FILE: about.css
+ * PURPOSE: Page-specific styles for the About Us page.
+ * DEPENDENCIES: styles.css (Global)
+ * KEY SECTIONS: History, Timeline, Values, Founders
+ */
+
+/* ==========================================================================
+   HISTORY SECTION
+   ========================================================================== */
+.history-image {
+    min-height: 200px;
+    background: linear-gradient(135deg, #cbdceb 0%, #b3cde3 100%);
+}
+
+.history-heading {
+    margin-top: 1.5rem;
+    font-size: 1.3rem;
+    border: none;
+    padding-bottom: 0;
+}
+
+/* ==========================================================================
+   TIMELINE
+   ========================================================================== */
+.timeline {
+    margin: 2rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.2rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.timeline-event {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -1.5rem;
+    top: 0.35rem;
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-color);
+    border: 2px solid var(--white);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(51, 161, 222, 0.3);
+}
+
+.timeline-event .year {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.1rem;
+}
+
+.timeline-event .desc {
+    font-size: 0.95rem;
+    color: var(--dark-text);
+}
+
+/* ==========================================================================
+   INSTITUTIONAL VALUES
+   ========================================================================== */
+.seal-placeholder {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 1rem auto;
+    padding: 1.5rem;
+}
+
+.seal-text {
+    font-size: 0.85rem;
+    color: var(--light-text);
+    text-align: center;
+    font-style: italic;
+}
+
+.value-list {
+    margin-top: 1rem;
+}
+
+.value-item {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.value-letter {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1;
+    width: 25px;
+}
+
+.value-content h4 {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+}
+
+.value-content p {
+    font-size: 0.85rem;
+    color: var(--light-text);
+}
+
+/* ==========================================================================
+   FOUNDERS
+   ========================================================================== */
+.founders-text {
+    font-size: 0.85rem;
+    color: var(--light-text);
+}
