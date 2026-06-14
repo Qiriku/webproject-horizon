@@ -6,6 +6,13 @@
     "role": "Student"
   },
   {
+    "email": "teacher@horizon.ac.at",
+    "password": "teacher2204",
+    "name": "Dr. Aylin Saros",
+    "role": "Teacher",
+    "lastAccess": "2026-06-14"
+  },
+  {
     "email": "admin@horizon.ac.at",
     "password": "admin123",
     "name": "System Administrator",
