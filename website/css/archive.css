@@ -1,0 +1,73 @@
+/*
+ * FILE: archive.css
+ * PURPOSE: Page-specific styles for the archive page.
+ */
+
+.archive-hero p,
+.archive-small-text {
+    color: var(--light-text);
+}
+
+.archive-search-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.archive-search-card label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.archive-search-card input {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: #fafbfc;
+}
+
+.archive-search-card input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(51, 161, 222, 0.15);
+}
+
+.archive-post {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.archive-meta {
+    color: var(--light-text);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.archive-category {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.archive-post h3 {
+    color: var(--primary-color);
+}
+
+.archive-image {
+    min-height: 140px;
+    margin-bottom: 1rem;
+}
+
+.archive-message {
+    color: var(--light-text);
+    text-align: center;
+}
+
+.archive-list {
+    color: var(--light-text);
+    padding-left: 1.2rem;
+}
+
+.archive-list li {
+    margin-bottom: 0.4rem;
+}
