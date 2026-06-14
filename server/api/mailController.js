@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const MAILS_FILE = path.join(__dirname, '../staticFiles/mails.json');
-const TRIGGER_PHRASE = 'CONTINUANCE 2204';
+const TRIGGER_PHRASE = process.env.ARG_TRIGGER;
 
 exports.getMails = (req, res) => {
     const { username } = req.query;

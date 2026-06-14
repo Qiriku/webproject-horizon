@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const newsController = require('../api/newsController');
@@ -6,7 +7,7 @@ const authController = require('../api/authController');
 const mailController = require('../api/mailController');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json()); // To parse JSON bodies

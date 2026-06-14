@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
 
-const JWT_SECRET = 'horizon_secret_2204_continuance'; // In production, this would be in .env
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const authController = {
     /**
