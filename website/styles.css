@@ -36,8 +36,121 @@ body {
 }
 
 /* ==========================================================================
+   PORTAL MODE LAYOUT
+   ========================================================================== */
+
+/* When body has .portal-mode, use a fixed side-nav layout to avoid grid height issues */
+body.portal-mode {
+    display: block; /* Changed from grid to block to fix the "giant white space" bug */
+    min-height: 100vh;
+}
+
+body.portal-mode #site-header {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    position: sticky;
+    top: 0;
+    z-index: 1100;
+}
+
+body.portal-mode main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+    margin-right: 0;
+    padding: 2rem;
+}
+
+/* Side Navigation */
+.side-nav {
+    background: linear-gradient(to bottom, var(--primary-color) 0%, #001a33 100%);
+    color: var(--white);
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    border-right: 3px solid var(--accent-color);
+    box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+    z-index: 1200;
+}
+
+.side-nav-header {
+    padding: 0 2rem 2rem 2rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 2rem;
+}
+
+.side-nav-header h3 {
+    color: var(--white);
+    font-family: 'Georgia', Times, serif;
+    font-size: 1.2rem;
+    border: none;
+    padding: 0;
+}
+
+.side-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+.side-nav-link {
+    color: #cbdceb;
+    text-decoration: none;
+    padding: 0.8rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.side-nav-link:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: var(--white);
+    padding-left: 1.2rem;
+}
+
+.side-nav-link.active-side {
+    background-color: var(--secondary-color);
+    color: var(--white);
+    box-shadow: inset 4px 0 0 var(--accent-color);
+}
+
+.side-nav-footer {
+    padding: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.logout-btn-side {
+    width: 100%;
+    background-color: rgba(229, 62, 62, 0.2);
+    color: #feb2b2;
+    border: 1px solid #e53e3e;
+    padding: 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.logout-btn-side:hover {
+    background-color: #e53e3e;
+    color: var(--white);
+}
+
+/* ==========================================================================
    BASE STYLES
    ========================================================================== */
+
 
 
 * {
@@ -170,10 +283,7 @@ header {
     background-color: var(--primary-color);
     border: none;
     cursor: pointer;
-    padding: 0.6rem;
-    z-index: 1100;
-    border-radius: 6px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1300;
     transition: background-color 0.2s, transform 0.2s;
 }
 
@@ -208,8 +318,6 @@ header {
 nav {
     background: linear-gradient(to bottom, #003366 0%, #002244 100%);
     box-shadow: var(--shadow-soft);
-    position: sticky;
-    top: 0;
     z-index: 1000;
     display: flex;
     justify-content: center;
@@ -399,6 +507,20 @@ footer p {
 
 /* TIER 1: MOBILE (< 600px) */
 @media (max-width: 599px) {
+    body.portal-mode {
+        margin-left: 0;
+    }
+
+    body.portal-mode #site-header, 
+    body.portal-mode main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    body.portal-mode .side-nav {
+        display: none; /* Hide side nav on mobile, use burger menu in header */
+    }
+    
     .content-grid-2, .content-grid-3 {
         grid-template-columns: 1fr;
     }
@@ -407,7 +529,7 @@ footer p {
         font-size: 1.6rem;
     }
     
-    .logo-text p {
+    .logo-// la-text p {
         font-size: 0.75rem;
     }
 
@@ -416,11 +538,11 @@ footer p {
     }
 
     nav {
-        position: relative;
+        position: fixed;
         top: 0;
         left: 0;
         right: 0;
-        min-height: 60px;
+        height: 60px;
         background-color: #002244;
         flex-direction: column;
         border-bottom: 3px solid var(--accent-color);
@@ -428,7 +550,7 @@ footer p {
         overflow: hidden;
         transition: max-height 0.3s ease-out;
         box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-        z-index: 1000;
+    z-index: 1200;
         display: block;
     }
 
@@ -482,6 +604,10 @@ footer p {
 
 /* TIER 3: DESKTOP (> 1024px) */
 @media (min-width: 1025px) {
+    body.portal-mode nav {
+        display: none;
+    }
+
     /* Desktop-specific overrides if needed */
     .content-grid-2 {
         grid-template-columns: 2fr 1fr;

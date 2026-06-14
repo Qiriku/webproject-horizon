@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Login | Horizon Institute</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/authGuard.js"></script>
+    <script src="/js/components.js" defer></script>
+    <script src="/js/login.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main style="display: flex; justify-content: center; align-items: center; min-height: 70vh;">
+        <section class="section-card" style="max-width: 450px; width: 100%; text-align: center;">
+            <h2>Portal Access</h2>
+            <p style="margin-bottom: 2rem; color: var(--light-text);">Please enter your credentials to access the Horizon Student Portal.</p>
+            
+            <form id="loginForm" style="text-align: left;">
+                <div class="form-group">
+                    <label for="email">Institutional Email</label>
+                    <input type="email" id="email" required placeholder="user@horizon.ac.at">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="••••••••" style="width: 100%; padding: 0.6rem 0.8rem; border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.9rem; outline: none; background-color: #fafbfc;">
+                </div>
+                
+                <div id="loginError" style="display: none; color: #c53030; font-size: 0.85rem; margin-bottom: 1rem; padding: 0.5rem; background: #fff5f5; border: 1px solid #feb2b2; border-radius: 4px;"></div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; border: none; cursor: pointer;">Authorize Access</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>

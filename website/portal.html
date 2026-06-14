@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal | Horizon Institute</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/authGuard.js"></script>
+    <script src="/js/components.js" defer></script>
+    <script src="/js/portal.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section-card">
+            <h2>Welcome to the Horizon Portal</h2>
+            <p id="welcomeMessage" style="font-size: 1.1rem; margin-bottom: 2rem;"></p>
+            
+            <div class="content-grid-2">
+                <div class="main-column">
+                    <div class="section-card">
+                        <h3>Account Status</h3>
+                        <p><strong>Status:</strong> <span style="color: green;">Active / Verified</span></p>
+                        <p><strong>Role:</strong> <span id="userRole">Loading...</span></p>
+                        <p><strong>Last Access:</strong> <span id="lastAccess">2026-06-13</span></p>
+                    </div>
+                </div>
+                <div class="sidebar-column">
+                    <div class="section-card" style="text-align: center;">
+                        <h3>Session Control</h3>
+                        <p style="font-size: 0.85rem; color: var(--light-text); margin-bottom: 1rem;">Securely end your current session.</p>
+                        <button id="logoutBtn" class="btn btn-secondary" style="background-color: #e53e3e; color: white; border: none; cursor: pointer;">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>
