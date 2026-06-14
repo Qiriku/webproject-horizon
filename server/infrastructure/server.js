@@ -3,6 +3,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const newsController = require('../api/newsController');
 const authController = require('../api/authController');
+const mailController = require('../api/mailController');
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +17,8 @@ app.use(express.static(path.join(__dirname, '../../website')));
 
 // API Routes
 app.get('/getNews', newsController.getNews);
+app.get('/api/get-mail', authController.verifyToken, mailController.getMails);
+app.post('/api/send-mail', authController.verifyToken, mailController.sendMail);
 app.post('/login', authController.login);
 app.post('/logout', authController.logout);
 
