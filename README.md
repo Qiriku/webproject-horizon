@@ -45,6 +45,32 @@ npm run dev
 npm start
 ```
 
+### JSON and XML API Responses
+
+Backend endpoints return JSON by default.
+Add `?format=xml` to get XML instead:
+
+```text
+http://localhost:3000/getNews?format=xml
+```
+
+### PATCH API Endpoint
+
+The portal uses a PATCH endpoint to update the current user's last access date:
+
+```text
+PATCH http://localhost:3000/api/users/last-access
+```
+
+### Archive Page
+
+The archive page loads posts from the backend and supports title search:
+
+```text
+http://localhost:3000/archive.html
+http://localhost:3000/getArchive
+```
+
 ---
 
 ## Folder Conventions
