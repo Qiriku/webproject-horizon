@@ -43,6 +43,18 @@ app.get('/api/ipstack-data', authController.verifyToken, ipstackController.getIp
 // Protected Route: Portal (Example of middleware usage)
 app.get('/api/portal-check', authController.verifyToken, (req, res) => {
   sendResponse(req, res, 200, { authenticated: true, user: req.user });
+app.get('/getArchive', archiveController.getArchivePosts);
+app.get('/api/get-mail', authController.verifyToken, mailController.getMails);
+app.post('/api/send-mail', authController.verifyToken, mailController.sendMail);
+app.get('/api/mail-provider', authController.verifyToken, mailController.getProvider);
+app.post('/api/set-provider', authController.verifyToken, mailController.setProvider);
+app.post('/login', authController.login);
+app.post('/logout', authController.logout);
+app.patch('/api/users/last-access', authController.verifyToken, userController.updateLastAccess);
+
+// Protected Route: Portal (Example of middleware usage)
+app.get('/api/portal-check', authController.verifyToken, (req, res) => {
+    sendResponse(req, res, 200, { authenticated: true, user: req.user });
 });
 
 // Route for the home page

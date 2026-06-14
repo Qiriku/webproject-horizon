@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inbox | Horizon Portal</title>
     <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/inbox.css">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/authGuard.js"></script>
     <script src="/js/components.js" defer></script>
@@ -13,16 +14,63 @@
     <div id="header-placeholder"></div>
 
     <main>
-        <section class="section-card">
-            <h2>Secure Inbox</h2>
-            <p>Your internal institutional communications.</p>
-            <div class="image-placeholder" style="min-height: 300px;">
-                <div class="placeholder-title">Message List Placeholder</div>
-                <div class="placeholder-desc">inbox_list_view.jpg</div>
+        <div class="mail-actions">
+            <button class="btn-compose" id="btnCompose">Compose New Message</button>
+        </div>
+
+        <div class="mail-container">
+            <div class="mail-folders">
+                <div class="folder-item active">📥 Inbox</div>
+                <div class="folder-item">📤 Sent</div>
+                <div class="folder-item">📁 Drafts</div>
+                <div class="folder-item">🗑️ Trash</div>
+                <div class="folder-item">📦 Archive</div>
             </div>
-        </section>
+            <div class="mail-list-pane" id="mailList">
+                <div class="mail-list-header">
+                    <span>Subject / Sender</span>
+                    <span>Date</span>
+                </div>
+                <!-- Mails injected here -->
+            </div>
+            <div class="mail-reader-pane" id="mailReader">
+                <div class="mail-reader-header">
+                    <div class="mail-reader-subject">Welcome to your Inbox</div>
+                    <div class="mail-reader-meta">
+                        <span>Select an email to read its content.</span>
+                    </div>
+                </div>
+                <div class="mail-reader-body">
+                    Please select a message from the list on the left.
+                </div>
+            </div>
+        </div>
     </main>
 
+    <!-- Compose Modal -->
+    <div class="compose-modal" id="composeModal">
+        <div class="compose-window">
+            <div class="compose-header">
+                <span>New Message</span>
+                <span class="compose-close" id="closeCompose">&times;</span>
+            </div>
+            <div class="compose-body">
+                <div class="compose-field">
+                    <label>To:</label>
+                    <input type="email" id="mailTo" placeholder="user@horizon.ac.at">
+                </div>
+                <div class="compose-field">
+                    <label>Message:</label>
+                    <textarea id="mailContent" placeholder="Write your message here..."></textarea>
+                </div>
+            </div>
+            <div class="compose-footer">
+                <button class="btn-send" id="btnSend">Send Message</button>
+            </div>
+        </div>
+    </div>
+
     <div id="footer-placeholder"></div>
+    <script src="/js/inbox.js" defer></script>
 </body>
 </html>

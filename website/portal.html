@@ -27,13 +27,22 @@
                         <p><strong>Last Access:</strong> <span id="lastAccess">2026-06-13</span></p>
                     </div>
                 </div>
-                <div class="sidebar-column">
-                    <div class="section-card" style="text-align: center;">
-                        <h3>Session Control</h3>
-                        <p style="font-size: 0.85rem; color: var(--light-text); margin-bottom: 1rem;">Securely end your current session.</p>
-                        <button id="logoutBtn" class="btn btn-secondary" style="background-color: #e53e3e; color: white; border: none; cursor: pointer;">Logout</button>
-                    </div>
-                </div>
+                 <div class="sidebar-column">
+                     <div class="section-card" style="text-align: center;">
+                         <h3>Session Control</h3>
+                         <p style="font-size: 0.85rem; color: var(--light-text); margin-bottom: 1rem;">Securely end your current session.</p>
+                         <button id="logoutBtn" class="btn btn-secondary" style="background-color: #e53e3e; color: white; border: none; cursor: pointer;">Logout</button>
+                     </div>
+                     <div id="adminSettings" class="section-card" style="display: none; text-align: center;">
+                         <h3>System Admin</h3>
+                         <p style="font-size: 0.85rem; color: var(--light-text); margin-bottom: 1rem;">Toggle Mail Provider</p>
+                         <select id="providerSelect" class="btn" style="width: 100%; margin-bottom: 1rem; text-align: left; background: white; color: black;">
+                             <option value="resend">Resend API</option>
+                             <option value="gmail">Gmail (Nodemailer)</option>
+                         </select>
+                         <button id="saveProviderBtn" class="btn btn-primary" style="width: 100%;">Save Provider</button>
+                     </div>
+                 </div>
             </div>
         </section>
     </main>

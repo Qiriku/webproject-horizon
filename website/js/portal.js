@@ -26,6 +26,31 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
       console.error('Could not update last access:', error);
       lastAccessSpan.innerText = 'Unknown';
+    const welcomeMsg = document.getElementById('welcomeMessage');
+    const roleSpan = document.getElementById('userRole');
+    const lastAccessSpan = document.getElementById('lastAccess');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    // Load user data from localStorage
+    const userName = localStorage.getItem('hz_userName');
+    const userRole = localStorage.getItem('hz_userRole');
+
+    if (userName && userRole) {
+        welcomeMsg.innerText = `Hello, ${userName}. Welcome back to your secure academic dashboard.`;
+        roleSpan.innerText = userRole;
+
+        try {
+            const response = await axios.patch('/api/users/last-access');
+            lastAccessSpan.innerText = response.data.lastAccess;
+        } catch (error) {
+            console.error('Could not update last access:', error);
+            lastAccessSpan.innerText = 'Unknown';
+        }
+    } else {
+        // Fallback if localStorage was cleared but cookie remains
+        welcomeMsg.innerText = `Welcome to the Horizon Portal.`;
+        roleSpan.innerText = `Unknown`;
+        lastAccessSpan.innerText = `Unknown`;
     }
 
     // ARG feature: teachers/admins see suspicious IP popup.
@@ -54,6 +79,36 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
   }
+
+    // Admin Provider Toggle Logic
+    if (userRole === 'Admin') {
+        const adminSettings = document.getElementById('adminSettings');
+        const providerSelect = document.getElementById('providerSelect');
+        const saveProviderBtn = document.getElementById('saveProviderBtn');
+
+        if (adminSettings) {
+            adminSettings.style.display = 'block';
+
+            // Load current provider
+            try {
+                const response = await axios.get('/api/mail-provider');
+                providerSelect.value = response.data.currentProvider;
+            } catch (err) {
+                console.error('Failed to load current mail provider:', err);
+            }
+
+            // Save new provider
+            saveProviderBtn.addEventListener('click', async () => {
+                try {
+                    const provider = providerSelect.value;
+                    await axios.post('/api/set-provider', { provider });
+                    alert(`Mail provider updated to ${provider}.`);
+                } catch (err) {
+                    alert('Failed to update mail provider.');
+                }
+            });
+        }
+    }
 });
 
 async function showIpWarning() {
