@@ -7,6 +7,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const welcomeMsg = document.getElementById('welcomeMessage');
     const roleSpan = document.getElementById('userRole');
+    const lastAccessSpan = document.getElementById('lastAccess');
     const logoutBtn = document.getElementById('logoutBtn');
 
     // Load user data from localStorage
@@ -16,10 +17,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (userName && userRole) {
         welcomeMsg.innerText = `Hello, ${userName}. Welcome back to your secure academic dashboard.`;
         roleSpan.innerText = userRole;
+
+        try {
+            const response = await axios.patch('/api/users/last-access');
+            lastAccessSpan.innerText = response.data.lastAccess;
+        } catch (error) {
+            console.error('Could not update last access:', error);
+            lastAccessSpan.innerText = 'Unknown';
+        }
     } else {
         // Fallback if localStorage was cleared but cookie remains
         welcomeMsg.innerText = `Welcome to the Horizon Portal.`;
         roleSpan.innerText = `Unknown`;
+        lastAccessSpan.innerText = `Unknown`;
     }
 
     if (logoutBtn) {

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
+const { sendResponse } = require('./responseFormatter');
 
 const JWT_SECRET = 'horizon_secret_2204_continuance'; // In production, this would be in .env
 
@@ -19,7 +20,7 @@ const authController = {
             const user = users.find(u => u.email === email && u.password === password);
 
             if (!user) {
-                return res.status(401).json({ error: 'Invalid email or password.' });
+                return sendResponse(req, res, 401, { error: 'Invalid email or password.' });
             }
 
             // Generate JWT
@@ -37,7 +38,7 @@ const authController = {
             });
 
             // Return user profile for localStorage
-            res.status(200).json({
+            sendResponse(req, res, 200, {
                 message: 'Login successful',
                 user: {
                     name: user.name,
@@ -46,7 +47,7 @@ const authController = {
             });
         } catch (error) {
             console.error('Auth error:', error);
-            res.status(500).json({ error: 'Internal server error.' });
+            sendResponse(req, res, 500, { error: 'Internal server error.' });
         }
     },
 
@@ -57,7 +58,7 @@ const authController = {
         const token = req.cookies.token;
 
         if (!token) {
-            return res.status(401).json({ error: 'Authentication required.' });
+            return sendResponse(req, res, 401, { error: 'Authentication required.' });
         }
 
         try {
@@ -65,7 +66,7 @@ const authController = {
             req.user = decoded;
             next();
         } catch (err) {
-            return res.status(401).json({ error: 'Invalid or expired token.' });
+            return sendResponse(req, res, 401, { error: 'Invalid or expired token.' });
         }
     },
 
@@ -75,7 +76,7 @@ const authController = {
      */
     logout: (req, res) => {
         res.clearCookie('token');
-        res.status(200).json({ message: 'Logged out successfully.' });
+        sendResponse(req, res, 200, { message: 'Logged out successfully.' });
     }
 };
 

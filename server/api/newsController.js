@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { sendResponse } = require('./responseFormatter');
 
 /**
  * newsController handles all API requests related to the news feed.
@@ -15,10 +16,10 @@ const newsController = {
             const rawData = fs.readFileSync(newsPath, 'utf8');
             const newsData = JSON.parse(rawData);
             
-            res.status(200).json(newsData);
+            sendResponse(req, res, 200, newsData, 'news');
         } catch (error) {
             console.error('Error reading news data:', error);
-            res.status(500).json({ 
+            sendResponse(req, res, 500, { 
                 error: 'Internal Server Error', 
                 message: 'Unable to retrieve news articles at this time.' 
             });

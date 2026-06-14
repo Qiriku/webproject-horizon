@@ -3,12 +3,14 @@
     "email": "noah.renn@horizon.ac.at",
     "password": "2204",
     "name": "Noah Renn",
-    "role": "Student"
+    "role": "Student",
+    "lastAccess": "2026-06-13"
   },
   {
     "email": "admin@horizon.ac.at",
     "password": "admin123",
     "name": "System Administrator",
-    "role": "Admin"
+    "role": "Admin",
+    "lastAccess": "2026-06-14"
   }
 ]
