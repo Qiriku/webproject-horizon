@@ -20,6 +20,8 @@ app.use(express.static(path.join(__dirname, '../../website')));
 app.get('/getNews', newsController.getNews);
 app.get('/api/get-mail', authController.verifyToken, mailController.getMails);
 app.post('/api/send-mail', authController.verifyToken, mailController.sendMail);
+app.get('/api/mail-provider', authController.verifyToken, mailController.getProvider);
+app.post('/api/set-provider', authController.verifyToken, mailController.setProvider);
 app.post('/login', authController.login);
 app.post('/logout', authController.logout);
 

@@ -37,4 +37,34 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         });
     }
+
+    // Admin Provider Toggle Logic
+    if (userRole === 'Admin') {
+        const adminSettings = document.getElementById('adminSettings');
+        const providerSelect = document.getElementById('providerSelect');
+        const saveProviderBtn = document.getElementById('saveProviderBtn');
+
+        if (adminSettings) {
+            adminSettings.style.display = 'block';
+
+            // Load current provider
+            try {
+                const response = await axios.get('/api/mail-provider');
+                providerSelect.value = response.data.currentProvider;
+            } catch (err) {
+                console.error('Failed to load current mail provider:', err);
+            }
+
+            // Save new provider
+            saveProviderBtn.addEventListener('click', async () => {
+                try {
+                    const provider = providerSelect.value;
+                    await axios.post('/api/set-provider', { provider });
+                    alert(`Mail provider updated to ${provider}.`);
+                } catch (err) {
+                    alert('Failed to update mail provider.');
+                }
+            });
+        }
+    }
 });
