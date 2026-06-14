@@ -19,9 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const response = await axios.post('/login', { email, password });
                 const { user } = response.data;
 
-                // Save profile data to localStorage
-                localStorage.setItem('hz_userName', user.name);
-                localStorage.setItem('hz_userRole', user.role);
+                    // Save profile data to localStorage
+                    localStorage.setItem('hz_userName', user.name);
+                    localStorage.setItem('hz_userEmail', email);
+                    localStorage.setItem('hz_userRole', user.role);
 
                 // Redirect to portal
                 window.location.href = '/portal.html';

@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const newsController = require('../api/newsController');
@@ -6,9 +7,10 @@ const archiveController = require('../api/archiveController');
 const authController = require('../api/authController');
 const userController = require('../api/userController');
 const { sendResponse } = require('../api/responseFormatter');
+const mailController = require('../api/mailController');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json()); // To parse JSON bodies
@@ -20,6 +22,8 @@ app.use(express.static(path.join(__dirname, '../../website')));
 // API Routes
 app.get('/getNews', newsController.getNews);
 app.get('/getArchive', archiveController.getArchivePosts);
+app.get('/api/get-mail', authController.verifyToken, mailController.getMails);
+app.post('/api/send-mail', authController.verifyToken, mailController.sendMail);
 app.post('/login', authController.login);
 app.post('/logout', authController.logout);
 app.patch('/api/users/last-access', authController.verifyToken, userController.updateLastAccess);
