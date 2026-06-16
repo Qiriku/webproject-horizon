@@ -72,3 +72,28 @@
 .portrait::before {
     content: '👤';
 }
+
+/* ==========================================================================
+   GLITCH EFFECT (Issue #19)
+   ========================================================================== */
+.glitch-active {
+    animation: glitch-anim 0.3s infinite;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.8),
+        rgba(0, 0, 0, 0.8) 2px,
+        rgba(0, 255, 0, 0.2) 2px,
+        rgba(0, 255, 0, 0.2) 4px
+    );
+    color: #fff;
+    border: 2px solid #ff0000;
+}
+
+@keyframes glitch-anim {
+    0% { transform: translate(0); }
+    20% { transform: translate(-3px, 3px); }
+    40% { transform: translate(-3px, -3px); }
+    60% { transform: translate(3px, 3px); }
+    80% { transform: translate(3px, -3px); }
+    100% { transform: translate(0); }
+}

@@ -10,6 +10,8 @@ const authController = require('../api/authController');
 const userController = require('../api/userController');
 const { sendResponse } = require('../api/responseFormatter');
 const mailController = require('../api/mailController');
+const peopleController = require('../api/peopleController');
+const timetableController = require('../api/timetableController');
 const ipstackController = require('../api/ipstackController');
 
 const app = express();
@@ -44,6 +46,9 @@ app.post('/logout', authController.logout);
 
 // User Management
 app.patch('/api/users/last-access', authController.verifyToken, userController.updateLastAccess);
+app.get('/api/people', authController.verifyToken, peopleController.getPeople);
+app.get('/api/timetable', authController.verifyToken, timetableController.getTimetable);
+app.post('/api/timetable', authController.verifyToken, timetableController.addLecture);
 
 // External REST API proxy
 app.get('/api/ipstack-data', authController.verifyToken, ipstackController.getIpData);
