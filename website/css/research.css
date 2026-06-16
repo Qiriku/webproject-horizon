@@ -1,0 +1,73 @@
+/*
+ * FILE: research.css
+ * PURPOSE: Page-specific styles for the research page.
+ */
+
+.research-hero p,
+.research-small-text {
+    color: var(--light-text);
+}
+
+.research-search-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.research-search-card label {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.research-search-card input {
+    width: 100%;
+    padding: 0.7rem 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: #fafbfc;
+}
+
+.research-search-card input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(51, 161, 222, 0.15);
+}
+
+.research-post {
+    border-left: 4px solid var(--secondary-color);
+}
+
+.research-meta {
+    color: var(--light-text);
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.research-category {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+.research-post h3 {
+    color: var(--primary-color);
+}
+
+.research-image {
+    min-height: 140px;
+    margin-bottom: 1rem;
+}
+
+.research-message {
+    color: var(--light-text);
+    text-align: center;
+}
+
+.research-list {
+    color: var(--light-text);
+    padding-left: 1.2rem;
+}
+
+.research-list li {
+    margin-bottom: 0.4rem;
+}

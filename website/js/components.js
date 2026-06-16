@@ -116,6 +116,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <a href="/academics.html" class="nav-link" data-page="academics">Academics</a>
                     <a href="/admissions.html" class="nav-link" data-page="admissions">Admissions</a>
                     <a href="/campus-life.html" class="nav-link" data-page="campus-life">Campus Life</a>
+                    <a href="/research.html" class="nav-link" data-page="research">Research</a>
                     <a href="/faculty.html" class="nav-link" data-page="faculty">Faculty & Staff</a>
                     <a href="/news.html" class="nav-link" data-page="news">News & Events</a>
                 `;
@@ -205,6 +206,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <a href="/academics.html">Academics</a> | 
                     <a href="/admissions.html">Admissions</a> | 
                     <a href="/campus-life.html">Campus Life</a> | 
+                    <a href="/research.html">Research</a> | 
                     <a href="/faculty.html">Faculty</a> | 
                     <a href="/news.html">News & Events</a>
                 </div>
