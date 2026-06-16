@@ -5,6 +5,7 @@ const nodemailer = require('nodemailer');
 const { sendResponse } = require('./responseFormatter');
 
 const MAILS_FILE = path.join(__dirname, '../staticFiles/mails.json');
+const USERS_FILE = path.join(__dirname, '../staticFiles/users.json');
 const TRIGGER_PHRASE = process.env.ARG_TRIGGER;
 
 // Current Provider State (Defaults to .env value)
@@ -22,26 +23,6 @@ const gmailTransporter = nodemailer.createTransport({
     },
 });
 
-/**
- * @swagger
- * /api/get-mail:
- *   get:
- *     summary: Fetch emails for a specific user
- *     tags: [Mail]
- *     parameters:
- *       - in: query
- *         name: username
- *         required: true
- *         schema:
- *           type: string
- *     responses:
- *       200:
- *         description: List of emails
- *       400:
- *         description: Username missing
- *       500:
- *         description: Server error
- */
 exports.getMails = (req, res) => {
     const { username } = req.query;
     if (!username) {
@@ -57,28 +38,6 @@ exports.getMails = (req, res) => {
     }
 };
 
-/**
- * @swagger
- * /api/set-provider:
- *   post:
- *     summary: Change mail delivery provider
- *     tags: [Mail]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               provider:
- *                 type: string
- *                 enum: [resend, gmail]
- *     responses:
- *       200:
- *         description: Provider updated
- *       400:
- *         description: Invalid provider
- */
 exports.setProvider = (req, res) => {
     const { provider } = req.body;
     if (provider === 'resend' || provider === 'gmail') {
@@ -88,82 +47,108 @@ exports.setProvider = (req, res) => {
     sendResponse(req, res, 400, { error: 'Invalid provider specified.' }, 'error');
 };
 
-/**
- * @swagger
- * /api/get-provider:
- *   get:
- *     summary: Get current mail provider
- *     tags: [Mail]
- *     responses:
- *       200:
- *         description: Returns current provider
- */
 exports.getProvider = (req, res) => {
     sendResponse(req, res, 200, { currentProvider }, 'provider');
 };
 
-/**
- * @swagger
- * /api/send-mail:
- *   post:
- *     summary: Send an email
- *     description: Sends an email. If the content contains the ARG trigger phrase, it is sent via the active provider.
- *     tags: [Mail]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               email:
- *                 type: string
- *               content:
- *                 type: string
- *     responses:
- *       200:
- *         description: Mail sent successfully
- *       400:
- *         description: Missing email or content
- *       500:
- *         description: API failure
- */
 exports.sendMail = async (req, res) => {
     const { email, content } = req.body;
+    const senderEmail = req.user ? req.user.email : 'system@horizon.ac.at';
 
     if (!email || !content) {
         return res.status(400).json({ error: 'Email and content are required' });
     }
 
-    // Check for ARG trigger phrase
-    if (TRIGGER_PHRASE && content.toUpperCase().includes(TRIGGER_PHRASE)) {
-        try {
+    try {
+        // 1. Check if recipient exists in the system (Internal Route)
+        const users = JSON.parse(fs.readFileSync(USERS_FILE, 'utf8'));
+        const recipient = users.find(u => u.email === email);
+
+        if (recipient) {
+            // Save to internal mails.json
+            const mailsData = JSON.parse(fs.readFileSync(MAILS_FILE, 'utf8'));
+            
+            const newMail = {
+                id: Date.now(),
+                from: senderEmail,
+                subject: 'Internal Communication',
+                date: new Date().toISOString().split('T')[0],
+                content: content
+            };
+
+            if (!mailsData[email]) {
+                mailsData[email] = [];
+            }
+            mailsData[email].push(newMail);
+            fs.writeFileSync(MAILS_FILE, JSON.stringify(mailsData, null, 2));
+
+            return sendResponse(req, res, 200, { success: true, message: 'Internal mail delivered to user mailbox.' }, 'mailResponse');
+        }
+
+        // 2. External Route
+        // Check for ARG trigger phrase
+        if (TRIGGER_PHRASE && content.toUpperCase().includes(TRIGGER_PHRASE)) {
+            // Retrieve the password of Dean Oren Vale for the ARG trigger
+            const oren = users.find(u => u.email === 'oren.vale@horizon.ac.at');
+            const password = oren ? oren.password : 'Password unavailable';
+
+            const professionalSubject = 'Security Notification: Account Password Recovery';
+            const professionalBody = `
+                <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; border: 1px solid #ddd; padding: 20px;">
+                    <h2 style="color: #003366; border-bottom: 2px solid #003366; padding-bottom: 10px;">Horizon Institute of Advanced Studies</h2>
+                    <p>Dear User,</p>
+                    <p>A request has been processed for the recovery of academic credentials associated with the Dean's office.</p>
+                    <div style="background: #f4f4f4; padding: 15px; border: 1px dashed #999; text-align: center; font-family: monospace; font-size: 1.2rem; margin: 20px 0;">
+                        <strong>${password}</strong>
+                    </div>
+                    <p>If you did not request this information, please ignore this message or contact the System Administrator immediately.</p>
+                    <p style="font-size: 0.8rem; color: #777; margin-top: 30px;">
+                        This is an automated message from the Horizon Continuity System. 
+                        Please do not reply to this address.
+                    </p>
+                </div>
+            `;
+
             if (currentProvider === 'resend') {
                 await resend.emails.send({
                     from: process.env.RESEND_FROM,
                     to: [email],
-                    subject: "Horizon Institute - Signal Received",
-                    html: `<p>${content}</p>`,
+                    subject: professionalSubject,
+                    html: professionalBody,
                 });
-                console.log(`[RESEND] Signal sent to ${email}`);
             } else {
                 await gmailTransporter.sendMail({
                     from: process.env.GMAIL_USER,
                     to: email,
-                    subject: "Horizon Institute - Signal Received",
-                    text: content,
+                    subject: professionalSubject,
+                    html: professionalBody,
                 });
-                console.log(`[GMAIL] Signal sent to ${email}`);
             }
             
             return sendResponse(req, res, 200, { success: true, message: 'Mail sent successfully. The signal has been received.' }, 'mailResponse');
-        } catch (error) {
-            console.error(`[${currentProvider.toUpperCase()} ERROR]:`, error);
-            return sendResponse(req, res, 500, { error: `Failed to send the signal via ${currentProvider}.` }, 'error');
         }
-    }
 
-    // Normal mail send (simulated)
-    console.log(`Normal mail sent to ${email}`);
-    sendResponse(req, res, 200, { success: true, message: 'Mail sent successfully.' }, 'mailResponse');
+        // 3. Normal External Mail
+        if (currentProvider === 'resend') {
+            await resend.emails.send({
+                from: process.env.RESEND_FROM,
+                to: [email],
+                subject: "Message from Horizon Institute",
+                html: `<p>${content}</p>`,
+            });
+        } else {
+            await gmailTransporter.sendMail({
+                from: process.env.GMAIL_USER,
+                to: email,
+                subject: "Message from Horizon Institute",
+                text: content,
+            });
+        }
+        
+        return sendResponse(req, res, 200, { success: true, message: 'External mail sent successfully.' }, 'mailResponse');
+
+    } catch (error) {
+        console.error(`[MAIL ERROR]:`, error);
+        return sendResponse(req, res, 500, { error: 'An error occurred while processing the mail.' }, 'error');
+    }
 };
