@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research | Horizon Institute</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/research.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="/js/components.js" defer></script>
+    <script src="/js/research.js" defer></script>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="section-card research-hero">
+            <h2>Research at Horizon</h2>
+            <p>Explore current and historical research initiatives from the Horizon Institute of Advanced Studies.</p>
+        </section>
+
+        <div class="content-grid-2">
+            <div class="main-column">
+                <section class="section-card research-search-card">
+                    <label for="researchSearch">Search by title</label>
+                    <input type="search" id="researchSearch" placeholder="Enter research title">
+                </section>
+
+                <div id="research-posts">
+                    <p class="research-message">Loading research posts...</p>
+                </div>
+            </div>
+
+            <div class="sidebar-column">
+                <section class="section-card">
+                    <h3>Research Areas</h3>
+                    <ul class="research-list">
+                        <li>Cognitive continuity</li>
+                        <li>Symbolic cognition</li>
+                        <li>Memory mapping</li>
+                        <li>Preservation ethics</li>
+                    </ul>
+                </section>
+
+                <section class="section-card">
+                    <h3>Research Notice</h3>
+                    <p class="research-small-text">Some project files are internal and only summaries are available to the public.</p>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>

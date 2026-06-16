@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const newsController = require('../api/newsController');
 const archiveController = require('../api/archiveController');
+const researchController = require('../api/researchController');
 const authController = require('../api/authController');
 const userController = require('../api/userController');
 const { sendResponse } = require('../api/responseFormatter');
@@ -22,6 +23,7 @@ app.use(express.static(path.join(__dirname, '../../website')));
 // API Routes
 app.get('/getNews', newsController.getNews);
 app.get('/getArchive', archiveController.getArchivePosts);
+app.get('/getResearch', researchController.getResearchPosts);
 app.get('/api/get-mail', authController.verifyToken, mailController.getMails);
 app.post('/api/send-mail', authController.verifyToken, mailController.sendMail);
 app.get('/api/mail-provider', authController.verifyToken, mailController.getProvider);
