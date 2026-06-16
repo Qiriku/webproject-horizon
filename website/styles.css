@@ -602,14 +602,130 @@ footer p {
     }
 }
 
-/* TIER 3: DESKTOP (> 1024px) */
-@media (min-width: 1025px) {
-    body.portal-mode nav {
-        display: none;
-    }
+/* ==========================================================================
+   HORROR IP WARNING - SYSTEM OVERRIDE
+   ========================================================================== */
 
-    /* Desktop-specific overrides if needed */
-    .content-grid-2 {
-        grid-template-columns: 2fr 1fr;
-    }
+.ip-warning-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fade-in 0.5s ease-out;
 }
+
+.ip-warning-box {
+    position: relative;
+    background: #0a0a0a;
+    color: #ff0000;
+    padding: 3rem;
+    border: 2px solid #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.4), inset 0 0 15px rgba(255, 0, 0, 0.2);
+    max-width: 600px;
+    width: 90%;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    animation: glitch-box 0.3s infinite;
+    overflow: hidden;
+}
+
+/* Scanline effect */
+.ip-warning-box::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.25) 50%
+    ), linear-gradient(
+        // 90deg
+        rgba(255, 0, 0, 0.06), 
+        rgba(0, 0, 0, 0.1), 
+        rgba(0, 0, 0, 0.1)
+    );
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ip-warning-box h2 {
+    color: #ff0000;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #ff0000;
+    padding-bottom: 1rem;
+    text-shadow: 2px 2px #550000;
+}
+
+.ip-warning-box p {
+    font-size: 1.1rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+}
+
+.ip-warning-box strong {
+    color: #fff;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.arg-warning {
+    color: #ff4444;
+    font-weight: bold;
+    border-left: 4px solid #ff0000;
+    padding-left: 1rem;
+    margin: 2rem 0;
+}
+
+.arg-warning-small {
+    font-size: 0.8rem;
+    color: #aa0000;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.ip-warning-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: 1px solid #ff0000;
+    color: #ff0000;
+    cursor: pointer;
+    font-size: 1.2rem;
+    width: 30px;
+    height: 30px;
+    transition: all 0.2s;
+}
+
+.ip-warning-close:hover {
+    background: #ff0000;
+    color: #000;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes glitch-box {
+    0% { transform: translate(0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(-2px, -1px); }
+    60% { transform: translate(2px, 1px); }
+    80% { transform: translate(2px, -1px); }
+    100% { transform: translate(0); }
+}
+
+/* Add this to the bottom of the file */
+

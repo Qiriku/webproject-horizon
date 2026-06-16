@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         // ARG feature: teachers/admins see suspicious IP popup.
         if (userRole === 'Teacher' || userRole === 'Admin') {
-            showIpWarning();
+            // Delay the trigger to create a "detection" effect.
+            setTimeout(showIpWarning, 1500);
         }
     } else {
         // Fallback if localStorage was cleared but cookie remains
@@ -100,20 +101,20 @@ async function showIpWarning() {
             <div class="ip-warning-box">
                 <button class="ip-warning-close" aria-label="Close warning">&times;</button>
 
-                <h2>Unknown IP detected.</h2>
+                <h2>UNAUTHORIZED CONTINUITY DETECTED</h2>
 
                 <p>
-                    Current access point:
+                    ACCESS POINT: 
                     <strong>${data.ip}</strong>
                 </p>
 
                 <p class="arg-warning">
-                    This address was not present in the previous continuity record.
-                    Please confirm that the person accessing this account is still the original user.
+                    THE BIOLOGICAL SIGNATURE DOES NOT MATCH THE REGISTERED RECORD. 
+                    PLEASE REMAIN STATIONARY FOR VERIFICATION.
                 </p>
 
                 <p class="arg-warning-small">
-                    If this message appears repeatedly, do not attend Orientation Review after 22:04.
+                    IF THIS MESSAGE APPEARS REPEATEDLY, DO NOT ATTEND ORIENTATION REVIEW AFTER 22:04.
                 </p>
             </div>
         `;
