@@ -272,3 +272,126 @@
 .btn-send:hover {
     background-color: var(--secondary-color);
 }
+
+@media (max-width: 900px) {
+    .mail-container {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: calc(100vh - 220px);
+    }
+
+    .mail-folders {
+        width: 160px;
+    }
+
+    .mail-list-pane {
+        flex: 1;
+        min-width: 280px;
+    }
+
+    .mail-reader-pane {
+        flex-basis: 100%;
+        min-height: 320px;
+        border-top: 1px solid var(--border-color);
+    }
+}
+
+@media (max-width: 599px) {
+    .mail-actions {
+        justify-content: stretch;
+    }
+
+    .btn-compose,
+    .btn-send {
+        width: 100%;
+    }
+
+    .mail-container {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .mail-folders {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: 0.5rem;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .folder-item {
+        flex: 0 0 auto;
+        border-left: none;
+        border-radius: 4px;
+        padding: 0.55rem 0.8rem;
+        white-space: nowrap;
+    }
+
+    .folder-item.active {
+        border-left: none;
+        border-bottom: 3px solid var(--primary-color);
+    }
+
+    .mail-list-pane {
+        width: 100%;
+        min-width: 0;
+        max-height: 45vh;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .mail-list-header,
+    .mail-item {
+        grid-template-columns: 1fr;
+        gap: 0.25rem;
+    }
+
+    .mail-list-header span:last-child {
+        display: none;
+    }
+
+    .mail-item-date {
+        text-align: left;
+    }
+
+    .mail-reader-pane {
+        min-height: 280px;
+        border-top: none;
+    }
+
+    .mail-reader-header,
+    .mail-reader-body {
+        padding: 1rem;
+    }
+
+    .mail-reader-subject {
+        font-size: 1.15rem;
+    }
+
+    .mail-reader-meta {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .compose-modal {
+        align-items: flex-end;
+        padding: 1rem;
+    }
+
+    .compose-window {
+        width: 100%;
+        max-height: 90vh;
+    }
+
+    .compose-body,
+    .compose-footer {
+        padding: 1rem;
+    }
+
+    .compose-field textarea {
+        height: 150px;
+    }
+}
