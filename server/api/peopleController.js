@@ -3,6 +3,20 @@ const path = require('path');
 const { sendResponse } = require('./responseFormatter');
 
 const peopleController = {
+    /**
+     * @swagger
+     * /api/people:
+     *   get:
+     *     summary: Get institutional directory
+     *     tags: [Portal]
+     *     security:
+     *       - cookieAuth: []
+     *     responses:
+     *       200:
+     *         description: List of students and staff
+     *       500:
+     *         description: Internal server error
+     */
     getPeople: (req, res) => {
         try {
             const usersPath = path.join(__dirname, '..', 'staticFiles', 'users.json');

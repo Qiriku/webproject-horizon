@@ -5,6 +5,20 @@ const { sendResponse } = require('./responseFormatter');
 const lecturesPath = path.join(__dirname, '..', 'staticFiles', 'lectures.json');
 
 const timetableController = {
+    /**
+     * @swagger
+     * /api/timetable:
+     *   get:
+     *     summary: Get current timetable
+     *     tags: [Portal]
+     *     security:
+     *       - cookieAuth: []
+     *     responses:
+     *       200:
+     *         description: List of lectures
+     *       500:
+     *         description: Internal server error
+     */
     getTimetable: (req, res) => {
         try {
             const data = JSON.parse(fs.readFileSync(lecturesPath, 'utf8'));
@@ -13,6 +27,33 @@ const timetableController = {
             sendResponse(req, res, 500, { error: 'Failed to read timetable.' });
         }
     },
+    /**
+     * @swagger
+     * /api/timetable:
+     *   post:
+     *     summary: Add a new lecture to timetable
+     *     tags: [Portal]
+     *     security:
+     *       - cookieAuth: []
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             properties:
+     *               title:
+     *                 type: string
+     *               datetime:
+     *                 type: string
+     *     responses:
+     *       201:
+     *         description: Lecture added
+     *       400:
+     *         description: Missing fields
+     *       500:
+     *         description: Internal server error
+     */
     addLecture: (req, res) => {
         try {
             const { title, datetime } = req.body;

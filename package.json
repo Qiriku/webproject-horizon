@@ -16,7 +16,9 @@
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.3",
     "nodemailer": "^9.0.0",
-    "resend": "^6.12.4"
+    "resend": "^6.12.4",
+    "swagger-jsdoc": "^6.3.0",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

@@ -17,7 +17,16 @@ function canEditNews(req) {
 }
 
 /**
- * newsController handles all API requests related to the news feed.
+ * @swagger
+ * /getNews:
+ *   get:
+ *     summary: Get all news articles
+ *     tags: [News]
+ *     responses:
+ *       200:
+ *         description: List of news articles
+ *       500:
+ *         description: Internal server error
  */
 const newsController = {
   /**
@@ -36,9 +45,35 @@ const newsController = {
       });
     }
   },
-
-  // POST /api/news
-  // Teacher/Admin can create a new news article.
+  /**
+   * @swagger
+   * /api/news:
+   *   post:
+   *     summary: Create a new news article
+   *     tags: [News]
+   *     security:
+   *       - cookieAuth: []
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               title:
+   *                 type: string
+   *               date:
+   *                 type: string
+   *               content:
+   *                 type: string
+   *     responses:
+       *       201:
+       *         description: News article created
+       *       400:
+       *         description: Missing fields
+       *       403:
+       *         description: Forbidden (Teacher/Admin only)
+   */
   createNews: (req, res) => {
     if (!canEditNews(req)) {
       return sendResponse(req, res, 403, {
@@ -69,9 +104,42 @@ const newsController = {
     sendResponse(req, res, 201, newArticle);
   },
 
-  // PUT /api/news/:id
-  // Teacher/Admin can update an existing news article.
-  updateNews: (req, res) => {
+  /**
+   * @swagger
+   * /api/news/{id}:
+   *   put:
+   *     summary: Update a news article
+   *     tags: [News]
+   *     security:
+   *       - cookieAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     requestBody:
+   *       required: true
+   *       content:
+   *         application/json:
+   *           schema:
+   *             type: object
+   *             properties:
+   *               title:
+   *                 type: string
+   *               date:
+   *                 type: string
+   *               content:
+   *                 type: string
+   *     responses:
+   *       200:
+   *         description: Article updated
+   *       403:
+   *         description: Forbidden
+   *       404:
+   *         description: Article not found
+   */
+   updateNews: (req, res) => {
     if (!canEditNews(req)) {
       return sendResponse(req, res, 403, {
         error: 'Only teachers or admins can update news.'
@@ -99,9 +167,29 @@ const newsController = {
     sendResponse(req, res, 200, article);
   },
 
-  // DELETE /api/news/:id
-  // Teacher/Admin can delete an existing news article.
-  deleteNews: (req, res) => {
+  /**
+   * @swagger
+   * /api/news/{id}:
+   *   delete:
+   *     summary: Delete a news article
+   *     tags: [News]
+   *     security:
+   *       - cookieAuth: []
+   *     parameters:
+   *       - in: path
+   *         name: id
+   *         required: true
+   *         schema:
+   *           type: integer
+   *     responses:
+   *       200:
+   *         description: Article deleted
+   *       403:
+ *         description: Forbidden
+   *       404:
+   *         description: Article not found
+   */
+   deleteNews: (req, res) => {
     if (!canEditNews(req)) {
       return sendResponse(req, res, 403, {
         error: 'Only teachers or admins can delete news.'

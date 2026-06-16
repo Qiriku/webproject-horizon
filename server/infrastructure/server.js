@@ -2,6 +2,8 @@ const express = require('express');
 require('dotenv').config();
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const swaggerUi = require('swagger-ui-express');
+const swaggerSpec = require('./swaggerConfig');
 
 const newsController = require('../api/newsController');
 const archiveController = require('../api/archiveController');
@@ -23,6 +25,9 @@ app.use(cookieParser()); // To parse cookies
 
 // Serve static files from the website directory
 app.use(express.static(path.join(__dirname, '../../website')));
+
+// Swagger API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // API Routes
 app.get('/getNews', newsController.getNews);

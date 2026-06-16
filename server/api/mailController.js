@@ -21,6 +21,26 @@ const gmailTransporter = nodemailer.createTransport({
     },
 });
 
+/**
+ * @swagger
+ * /api/get-mail:
+ *   get:
+ *     summary: Fetch emails for a specific user
+ *     tags: [Mail]
+ *     parameters:
+ *       - in: query
+ *         name: username
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: List of emails
+ *       400:
+ *         description: Username missing
+ *       500:
+ *         description: Server error
+ */
 exports.getMails = (req, res) => {
     const { username } = req.query;
     if (!username) {
@@ -36,6 +56,28 @@ exports.getMails = (req, res) => {
     }
 };
 
+/**
+ * @swagger
+ * /api/set-provider:
+ *   post:
+ *     summary: Change mail delivery provider
+ *     tags: [Mail]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               provider:
+ *                 type: string
+ *                 enum: [resend, gmail]
+ *     responses:
+ *       200:
+ *         description: Provider updated
+ *       400:
+ *         description: Invalid provider
+ */
 exports.setProvider = (req, res) => {
     const { provider } = req.body;
     if (provider === 'resend' || provider === 'gmail') {
@@ -45,10 +87,46 @@ exports.setProvider = (req, res) => {
     res.status(400).json({ error: 'Invalid provider specified.' });
 };
 
+/**
+ * @swagger
+ * /api/get-provider:
+ *   get:
+ *     summary: Get current mail provider
+ *     tags: [Mail]
+ *     responses:
+ *       200:
+ *         description: Returns current provider
+ */
 exports.getProvider = (req, res) => {
     res.json({ currentProvider });
 };
 
+/**
+ * @swagger
+ * /api/send-mail:
+ *   post:
+ *     summary: Send an email
+ *     description: Sends an email. If the content contains the ARG trigger phrase, it is sent via the active provider.
+ *     tags: [Mail]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               content:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Mail sent successfully
+ *       400:
+ *         description: Missing email or content
+ *       500:
+ *         description: API failure
+ */
 exports.sendMail = async (req, res) => {
     const { email, content } = req.body;
 

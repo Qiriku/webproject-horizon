@@ -3,6 +3,18 @@ const path = require('path');
 const { sendResponse } = require('./responseFormatter');
 
 const researchController = {
+    /**
+     * @swagger
+     * /getResearch:
+     *   get:
+     *     summary: Get all research posts
+     *     tags: [Research]
+     *     responses:
+     *       200:
+     *         description: List of research posts
+     *       500:
+     *         description: Internal server error
+     */
     getResearchPosts: (req, res) => {
         try {
             const researchPath = path.join(__dirname, '..', 'staticFiles', 'research.json');
