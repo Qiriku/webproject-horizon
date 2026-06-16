@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="/js/authGuard.js"></script>
     <script src="/js/components.js" defer></script>
+    <script src="/js/people.js" defer></script>
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -16,9 +17,20 @@
         <section class="section-card">
             <h2>Institutional Directory</h2>
             <p>Contact details for faculty and fellow candidates.</p>
-            <div class="image-placeholder" style="min-height: 300px;">
-                <div class="placeholder-title">People Directory Placeholder</div>
-                <div class="placeholder-desc">people_directory_view.jpg</div>
+            
+            <div class="content-grid-2" style="margin-top: 2rem;">
+                <div class="section-card">
+                    <h3>Faculty & Admin</h3>
+                    <ul id="staff-list" style="line-height: 1.8; list-style-type: none; padding-left: 0;">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
+                <div class="section-card">
+                    <h3>Enrolled Students</h3>
+                    <ul id="student-list" style="line-height: 1.8; list-style-type: none; padding-left: 0;">
+                        <li>Loading...</li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
