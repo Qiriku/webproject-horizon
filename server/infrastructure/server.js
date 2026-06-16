@@ -8,6 +8,8 @@ const authController = require('../api/authController');
 const userController = require('../api/userController');
 const { sendResponse } = require('../api/responseFormatter');
 const mailController = require('../api/mailController');
+const peopleController = require('../api/peopleController');
+const timetableController = require('../api/timetableController');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -29,6 +31,9 @@ app.post('/api/set-provider', authController.verifyToken, mailController.setProv
 app.post('/login', authController.login);
 app.post('/logout', authController.logout);
 app.patch('/api/users/last-access', authController.verifyToken, userController.updateLastAccess);
+app.get('/api/people', authController.verifyToken, peopleController.getPeople);
+app.get('/api/timetable', authController.verifyToken, timetableController.getTimetable);
+app.post('/api/timetable', authController.verifyToken, timetableController.addLecture);
 
 // Protected Route: Portal (Example of middleware usage)
 app.get('/api/portal-check', authController.verifyToken, (req, res) => {
