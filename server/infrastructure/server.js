@@ -24,35 +24,29 @@ app.use(express.static(path.join(__dirname, '../../website')));
 // API Routes
 app.get('/getNews', newsController.getNews);
 
-// These three routes fix the GET/POST/PUT/DELETE requirement.
+// News CRUD
 app.post('/api/news', authController.verifyToken, newsController.createNews);
 app.put('/api/news/:id', authController.verifyToken, newsController.updateNews);
 app.delete('/api/news/:id', authController.verifyToken, newsController.deleteNews);
 
-app.get('/getArchive', archiveController.getArchivePosts);
-app.get('/api/get-mail', authController.verifyToken, mailController.getMails);
-app.post('/api/send-mail', authController.verifyToken, mailController.sendMail);
-app.post('/login', authController.login);
-app.post('/logout', authController.logout);
-app.patch('/api/users/last-access', authController.verifyToken, userController.updateLastAccess);
-
-// External REST API route.
-// Keeps the old endpoint name, but now uses IPify without a key.
-app.get('/api/ipstack-data', authController.verifyToken, ipstackController.getIpData);
-
-// Protected Route: Portal (Example of middleware usage)
-app.get('/api/portal-check', authController.verifyToken, (req, res) => {
-  sendResponse(req, res, 200, { authenticated: true, user: req.user });
+// Archive and Mail
 app.get('/getArchive', archiveController.getArchivePosts);
 app.get('/api/get-mail', authController.verifyToken, mailController.getMails);
 app.post('/api/send-mail', authController.verifyToken, mailController.sendMail);
 app.get('/api/mail-provider', authController.verifyToken, mailController.getProvider);
 app.post('/api/set-provider', authController.verifyToken, mailController.setProvider);
+
+// Authentication
 app.post('/login', authController.login);
 app.post('/logout', authController.logout);
+
+// User Management
 app.patch('/api/users/last-access', authController.verifyToken, userController.updateLastAccess);
 
-// Protected Route: Portal (Example of middleware usage)
+// External REST API proxy
+app.get('/api/ipstack-data', authController.verifyToken, ipstackController.getIpData);
+
+// Portal Guard
 app.get('/api/portal-check', authController.verifyToken, (req, res) => {
     sendResponse(req, res, 200, { authenticated: true, user: req.user });
 });
