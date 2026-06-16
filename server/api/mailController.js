@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { Resend } = require('resend');
 const nodemailer = require('nodemailer');
+const { sendResponse } = require('./responseFormatter');
 
 const MAILS_FILE = path.join(__dirname, '../staticFiles/mails.json');
 const TRIGGER_PHRASE = process.env.ARG_TRIGGER;
@@ -50,9 +51,9 @@ exports.getMails = (req, res) => {
     try {
         const data = JSON.parse(fs.readFileSync(MAILS_FILE, 'utf8'));
         const userMails = data[username] || [];
-        res.json(userMails);
+        sendResponse(req, res, 200, userMails, 'mails');
     } catch (err) {
-        res.status(500).json({ error: 'Failed to read mail data' });
+        sendResponse(req, res, 500, { error: 'Failed to read mail data' }, 'error');
     }
 };
 
@@ -82,9 +83,9 @@ exports.setProvider = (req, res) => {
     const { provider } = req.body;
     if (provider === 'resend' || provider === 'gmail') {
         currentProvider = provider;
-        return res.json({ success: true, currentProvider });
+        return sendResponse(req, res, 200, { success: true, currentProvider }, 'providerUpdate');
     }
-    res.status(400).json({ error: 'Invalid provider specified.' });
+    sendResponse(req, res, 400, { error: 'Invalid provider specified.' }, 'error');
 };
 
 /**
@@ -98,7 +99,7 @@ exports.setProvider = (req, res) => {
  *         description: Returns current provider
  */
 exports.getProvider = (req, res) => {
-    res.json({ currentProvider });
+    sendResponse(req, res, 200, { currentProvider }, 'provider');
 };
 
 /**
@@ -155,14 +156,14 @@ exports.sendMail = async (req, res) => {
                 console.log(`[GMAIL] Signal sent to ${email}`);
             }
             
-            return res.json({ success: true, message: 'Mail sent successfully. The signal has been received.' });
+            return sendResponse(req, res, 200, { success: true, message: 'Mail sent successfully. The signal has been received.' }, 'mailResponse');
         } catch (error) {
             console.error(`[${currentProvider.toUpperCase()} ERROR]:`, error);
-            return res.status(500).json({ error: `Failed to send the signal via ${currentProvider}.` });
+            return sendResponse(req, res, 500, { error: `Failed to send the signal via ${currentProvider}.` }, 'error');
         }
     }
 
     // Normal mail send (simulated)
     console.log(`Normal mail sent to ${email}`);
-    res.json({ success: true, message: 'Mail sent successfully.' });
+    sendResponse(req, res, 200, { success: true, message: 'Mail sent successfully.' }, 'mailResponse');
 };
