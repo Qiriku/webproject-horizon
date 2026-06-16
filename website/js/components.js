@@ -208,7 +208,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <a href="/campus-life.html">Campus Life</a> | 
                     <a href="/research.html">Research</a> | 
                     <a href="/faculty.html">Faculty</a> | 
-                    <a href="/news.html">News & Events</a>
+                    <a href="/news.html">News & Events</a> | 
+                    <a href="/login.html">Portal Login</a>
                 </div>
                 <p>&copy; 2012 Horizon Institute of Advanced Studies. All Rights Reserved.</p>
             </footer>

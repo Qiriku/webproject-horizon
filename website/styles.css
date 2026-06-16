@@ -177,7 +177,7 @@ body {
 #site-header {
     position: sticky;
     top: 0;
-    z-index: 1100;
+    z-index: 1300;
     background-color: var(--white);
 }
 
@@ -542,7 +542,7 @@ footer p {
         top: 0;
         left: 0;
         right: 0;
-        height: 60px;
+        min-height: 60px;
         background-color: #002244;
         flex-direction: column;
         border-bottom: 3px solid var(--accent-color);
@@ -550,7 +550,7 @@ footer p {
         overflow: hidden;
         transition: max-height 0.3s ease-out;
         box-shadow: 0 10px 15px rgba(0,0,0,0.2);
-    z-index: 1200;
+        z-index: 1200;
         display: block;
     }
 
