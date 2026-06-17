@@ -3,6 +3,18 @@ const path = require('path');
 const { sendResponse } = require('./responseFormatter');
 
 const archiveController = {
+    /**
+     * @swagger
+     * /getArchive:
+     *   get:
+     *     summary: Get all archive posts
+     *     tags: [Archive]
+     *     responses:
+     *       200:
+     *         description: List of archive posts
+     *       500:
+     *         description: Internal server error
+     */
     getArchivePosts: (req, res) => {
         try {
             const archivePath = path.join(__dirname, '..', 'staticFiles', 'archive.json');

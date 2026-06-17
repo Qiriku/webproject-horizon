@@ -9,6 +9,22 @@ function getToday() {
 }
 
 const userController = {
+    /**
+     * @swagger
+     * /api/users/last-access:
+     *   patch:
+     *     summary: Update user's last access date
+     *     tags: [User]
+     *     security:
+     *       - cookieAuth: []
+     *     responses:
+     *       200:
+     *         description: Last access updated
+     *       404:
+     *         description: User not found
+     *       500:
+     *         description: Internal server error
+     */
     updateLastAccess: (req, res) => {
         try {
             const users = JSON.parse(fs.readFileSync(usersPath, 'utf8'));

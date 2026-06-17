@@ -4,7 +4,21 @@
     "password": "2204",
     "name": "Noah Renn",
     "role": "Student",
-    "lastAccess": "2026-06-14"
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "admin@horizon.ac.at",
+    "password": "admin123",
+    "name": "System Administrator",
+    "role": "Admin",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "elias.veyr@horizon.ac.at",
+    "password": "vEyR_7kL#2pXm",
+    "name": "Dr. Elias Veyr",
+    "role": "Admin",
+    "lastAccess": "2026-06-15"
   },
   {
     "email": "aylin.saros@horizon.ac.at",
@@ -14,10 +28,164 @@
     "lastAccess": "2026-06-17"
   },
   {
-    "email": "admin@horizon.ac.at",
-    "password": "admin123",
-    "name": "System Administrator",
+    "email": "mara.ilun@horizon.ac.at",
+    "password": "iLUn_9sQ!4zWt",
+    "name": "Prof. Mara Ilun",
+    "role": "Teacher",
+    "lastAccess": "2026-06-17"
+  },
+  {
+    "email": "simon.kade@horizon.ac.at",
+    "password": "kAdE_3jF&8bYn",
+    "name": "Dr. Simon Kade",
+    "role": "Teacher",
+    "lastAccess": "2026-06-12"
+  },
+  {
+    "email": "oren.vale@horizon.ac.at",
+    "password": "vAlE_5tH*9qLk",
+    "name": "Dean Oren Vale",
     "role": "Admin",
+    "lastAccess": "2026-06-10"
+  },
+  {
+    "email": "julian.thorne@horizon.ac.at",
+    "password": "jTho_8mN$2xPq",
+    "name": "Julian Thorne",
+    "role": "Student",
     "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "clara.mistry@horizon.ac.at",
+    "password": "cMis_4kB#7wTz",
+    "name": "Clara Mistry",
+    "role": "Student",
+    "lastAccess": "2026-06-15"
+  },
+  {
+    "email": "leo.vance@horizon.ac.at",
+    "password": "lVan_1zR%3yHg",
+    "name": "Leo Vance",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "sora.tanaka@horizon.ac.at",
+    "password": "sTan_6vX&9mKj",
+    "name": "Sora Tanaka",
+    "role": "Student",
+    "lastAccess": "2026-06-14"
+  },
+  {
+    "email": "elena.rossi@horizon.ac.at",
+    "password": "eRos_2sT!5qNp",
+    "name": "Elena Rossi",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "marcus.thorne@horizon.ac.at",
+    "password": "mTho_7dL#1wZm",
+    "name": "Marcus Thorne",
+    "role": "Student",
+    "lastAccess": "2026-06-15"
+  },
+  {
+    "email": "ivy.sterling@horizon.ac.at",
+    "password": "iSte_3yP%8bXv",
+    "name": "Ivy Sterling",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "felix.voss@horizon.ac.at",
+    "password": "fVos_9qR&4mKj",
+    "name": "Felix Voss",
+    "role": "Student",
+    "lastAccess": "2026-06-13"
+  },
+  {
+    "email": "naomi.kael@horizon.ac.at",
+    "password": "nKae_2sC!7wTz",
+    "name": "Naomi Kael",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "jasper.finch@horizon.ac.at",
+    "password": "jFin_6vX%3yHg",
+    "name": "Jasper Finch",
+    "role": "Student",
+    "lastAccess": "2026-06-15"
+  },
+  {
+    "email": "maya.sol@horizon.ac.at",
+    "password": "mSol_8mN&9mKj",
+    "name": "Maya Sol",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "silas.thorne@horizon.ac.at",
+    "password": "sTho_4kB!2xPq",
+    "name": "Silas Thorne",
+    "role": "Student",
+    "lastAccess": "2026-06-14"
+  },
+  {
+    "email": "quinn.arbor@horizon.ac.at",
+    "password": "qArb_7wT#5qNp",
+    "name": "Quinn Arbor",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "lyra.belacqua@horizon.ac.at",
+    "password": "lBel_1zR%8bXv",
+    "name": "Lyra Belacqua",
+    "role": "Student",
+    "lastAccess": "2026-06-12"
+  },
+  {
+    "email": "orion.pax@horizon.ac.at",
+    "password": "oPax_9qR!4mKj",
+    "name": "Orion Pax",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "zara.quinn@horizon.ac.at",
+    "password": "zQui_2sT&7wTz",
+    "name": "Zara Quinn",
+    "role": "Student",
+    "lastAccess": "2026-06-15"
+  },
+  {
+    "email": "hugo.strange@horizon.ac.at",
+    "password": "hStr_6vX#3yHg",
+    "name": "Hugo Strange",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "mila.kunt@horizon.ac.at",
+    "password": "mKun_8mN%9mKj",
+    "name": "Mila Kunt",
+    "role": "Student",
+    "lastAccess": "2026-06-14"
+  },
+  {
+    "email": "theo.crane@horizon.ac.at",
+    "password": "tCra_4kB!2xPq",
+    "name": "Theo Crane",
+    "role": "Student",
+    "lastAccess": "2026-06-16"
+  },
+  {
+    "email": "vera.zandt@horizon.ac.at",
+    "password": "vZan_7wT#5qNp",
+    "name": "Vera Zandt",
+    "role": "Student",
+    "lastAccess": "2026-06-15"
   }
 ]

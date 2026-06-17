@@ -7,8 +7,30 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 const authController = {
     /**
-     * POST /login
-     * Verifies credentials and issues a JWT cookie.
+     * @swagger
+     * /login:
+     *   post:
+     *     summary: User login
+     *     description: Verifies credentials and issues a JWT cookie.
+     *     tags: [Authentication]
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             properties:
+     *               email:
+     *                 type: string
+     *               password:
+     *                 type: string
+     *     responses:
+     *       200:
+     *         description: Login successful
+     *       401:
+     *         description: Invalid credentials
+     *       500:
+     *         description: Internal server error
      */
     login: (req, res) => {
         const { email, password } = req.body;
@@ -71,8 +93,15 @@ const authController = {
     },
 
     /**
-     * POST /logout
-     * Clears the JWT cookie.
+     * @swagger
+     * /logout:
+     *   post:
+     *     summary: User logout
+     *     description: Clears the JWT cookie.
+     *     tags: [Authentication]
+     *     responses:
+     *       200:
+     *         description: Logged out successfully
      */
     logout: (req, res) => {
         res.clearCookie('token');

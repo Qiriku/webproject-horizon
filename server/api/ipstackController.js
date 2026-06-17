@@ -28,6 +28,18 @@ function fetchJson(url) {
 }
 
 const ipstackController = {
+  /**
+   * @swagger
+   * /api/ipstack-data:
+   *   get:
+   *     summary: Get public IP address data
+   *     tags: [System]
+   *     security:
+   *       - cookieAuth: []
+   *     responses:
+   *       200:
+   *         description: IP address data retrieved
+   */
   getIpData: async (req, res) => {
     try {
       // External REST API call.
