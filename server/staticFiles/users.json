@@ -21,11 +21,18 @@
     "lastAccess": "2026-06-15"
   },
   {
+    "email": "aylin.saros@horizon.ac.at",
+    "password": "teacher2204",
+    "name": "Dr. Aylin Saros",
+    "role": "Teacher",
+    "lastAccess": "2026-06-17"
+  },
+  {
     "email": "mara.ilun@horizon.ac.at",
     "password": "iLUn_9sQ!4zWt",
     "name": "Prof. Mara Ilun",
     "role": "Teacher",
-    "lastAccess": "2026-06-14"
+    "lastAccess": "2026-06-17"
   },
   {
     "email": "simon.kade@horizon.ac.at",

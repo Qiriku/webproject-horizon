@@ -61,18 +61,21 @@
    PORTRAITS
    ========================================================================== */
 .portrait {
-    width: 150px;
-    height: 180px;
-    min-height: 180px;
-    margin: 0 auto 1rem auto;
-    border-radius: 4px;
-    padding: 1rem;
+  width: 180px;
+  height: 220px;
+  margin: 0 auto 1rem auto;
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 0;
+  background: #dbeaf5;
 }
 
-.portrait::before {
-    content: '👤';
+.portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
-
 /* ==========================================================================
    GLITCH EFFECT (Issue #19)
    ========================================================================== */

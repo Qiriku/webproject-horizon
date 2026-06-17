@@ -20,6 +20,13 @@
       "subject": "Password Policy Update",
       "date": "2012-09-05 11:00",
       "content": "Notice: All students are required to update their portal passwords every 90 days to ensure network security. Please navigate to account settings to update yours."
+    },
+     {
+      "id": 1,
+      "from": "it.support@horizon.ac.at",
+      "subject": "CONTINUITY REVIEW",
+      "date": "2026-06-17 10:45",
+      "content": "Initial Identity markers confirmed. \nMemory persistence observed.\nRecognition persistence observed.\n\nDuplication successful\n\nDemo ending\nthanks for playing!"
     }
   ],
   "admin@horizon.ac.at": [
