@@ -7,17 +7,17 @@
     "lastAccess": "2026-06-14"
   },
   {
-    "email": "teacher@horizon.ac.at",
+    "email": "aylin.saros@horizon.ac.at",
     "password": "teacher2204",
     "name": "Dr. Aylin Saros",
     "role": "Teacher",
-    "lastAccess": "2026-06-14"
+    "lastAccess": "2026-06-17"
   },
   {
     "email": "admin@horizon.ac.at",
     "password": "admin123",
     "name": "System Administrator",
     "role": "Admin",
-    "lastAccess": "2026-06-14"
+    "lastAccess": "2026-06-16"
   }
 ]
